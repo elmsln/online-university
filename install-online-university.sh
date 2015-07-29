@@ -81,11 +81,10 @@ drush sqlq "UPDATE block SET title='<none>' WHERE module='menu_block'"
 # establish domain file for this
 touch /etc/httpd/conf.d/publicize.conf
 echo "#ELMSLN domains.conf recommendations" >> /etc/httpd/conf.d/publicize.conf
-echo "NameVirtualHost *:80" >> /etc/httpd/conf.d/publicize.conf
 echo "<VirtualHost *:80>" >> /etc/httpd/conf.d/publicize.conf
 echo "    DocumentRoot /var/www/html/publicize" >> /etc/httpd/conf.d/publicize.conf
-echo "    ServerName online.YOURUNIT.edu" >> /etc/httpd/conf.d/publicize.conf
-echo "    ServerAlias DATA.online.SERVICEYOURUNIT.edu" >> /etc/httpd/conf.d/publicize.conf
+echo "    ServerName ${3}" >> /etc/httpd/conf.d/publicize.conf
+echo "    ServerAlias www.${3}" >> /etc/httpd/conf.d/publicize.conf
 echo "</VirtualHost>" >> /etc/httpd/conf.d/publicize.conf
 echo "<Directory /var/www/html/publicize>" >> /etc/httpd/conf.d/publicize.conf
 echo "    AllowOverride all" >> /etc/httpd/conf.d/publicize.conf
