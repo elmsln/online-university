@@ -92,11 +92,22 @@ echo "    Order allow,deny" >> /etc/httpd/conf.d/publicize.conf
 echo "    allow from all" >> /etc/httpd/conf.d/publicize.conf
 echo "</Directory>" >> /etc/httpd/conf.d/publicize.conf
 
-# @todo figure out how to automatically install learning locker via this method
-
-# @todo figure out how to automatically install piwik via this method
-
 # clean up and enjoy!
 sudo /etc/init.d/httpd restart
 sudo /etc/init.d/mysqld restart
 
+# clear caches and cron things
+drush @elmsln cc all --y
+drush @elmsln cron --y
+# seed entity caches at least
+drush @elmsln ecl --y
+# same but for publicize
+drush cc all --y
+drush cron --y
+# seed entity caches at least
+drush ecl --y
+# @todo enable bakery for SSO everywhere
+
+# # @todo figure out how to automatically install learning locker via this method
+
+# @todo figure out how to automatically install piwik via this method
