@@ -1,9 +1,10 @@
 # online-university
 This repository provides usage of an included 1-line script that can be used to attempt to setup a university in a box. It goes about accomplishing this by installing and configuring...
--- ELMS Learning Network
--- Drupal 7 using Publicize to market your institution and what it does
--- Learning Locker for XAPI / TinCanAPI LRS capture(future)
--- Piwik general tracking, analytics (future)
+
+- ELMS Learning Network
+- Drupal 7 using Publicize to market your institution and what it does
+- Learning Locker for XAPI / TinCanAPI LRS capture(future)
+- Piwik general tracking, analytics (future)
 
 The goals of this repo are obvious; spin up nearly a decade of thought leadership without effort. The most effective way to lead in the future is through empowerment. We seek to empower all.
 
