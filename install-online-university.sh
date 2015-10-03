@@ -18,7 +18,7 @@ timestamp(){
 }
 start="$(timestamp)"
 # run the 1-line installer for elmsln
-yes | yum -y install git && git clone https://github.com/elmsln/elmsln.git /var/www/elmsln && bash /var/www/elmsln/scripts/install/handsfree/centos/centos-install.sh $1 $2 $3 $4 $5 $6
+yes | yum -y install git wget && git clone https://github.com/elmsln/elmsln.git /var/www/elmsln && bash /var/www/elmsln/scripts/install/handsfree/centos/centos-install.sh $1 $2 $3 $4 $5 $6
 cd $HOME && source .bashrc
 # setup publicize for the homepage system to market this university
 git clone --branch 7.x-1.x https://github.com/drupalprojects/publicize.git /var/www/html/publicize
