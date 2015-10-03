@@ -10,7 +10,7 @@ The goals of this repo are obvious; spin up nearly a decade of thought leadershi
 
 # Installation
 Copy and paste this / deploy it on a new server (CentOS 6.5 install)
-`yes | yum -y install git && git clone https://github.com/elmsln/online-university.git online-university && bash online-university/install-online-university.sh elmsln ln elmsln.dev http admin@elmsln.dev yes`
+`yes | yum -y install git wget && git clone https://github.com/elmsln/online-university.git online-university && bash online-university/install-online-university.sh elmsln ln elmsln.dev http admin@elmsln.dev yes`
 
 ## Assumptions (currently)
 Select the cloud provider of your choosing and deploy. This currently works against Digital Ocean / CentOS 6.5 blank servers. Do not run this against anything else.
