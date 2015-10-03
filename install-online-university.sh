@@ -20,30 +20,6 @@ start="$(timestamp)"
 # run the 1-line installer for elmsln
 yes | yum -y install git && git clone https://github.com/elmsln/elmsln.git /var/www/elmsln && bash /var/www/elmsln/scripts/install/handsfree/centos/centos-install.sh $1 $2 $3 $4 $5 $6
 cd $HOME && source .bashrc
-# get things in place so that we can run mysql / php 5.5
-rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
-yes | yum -y --enablerepo=remi install mysql mysql-server
-/etc/init.d/mysqld restart
-yes | yum -y --enablerepo=remi,remi-php55 install httpd php php-common
-yes | yum -y --enablerepo=remi,remi-php55 install php-pecl-apc php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongo php-sqlite php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml
-/etc/init.d/httpd restart
-# clean up upload progress not being needed now
-rm /etc/php.d/uploadprogress.ini
-# optimize apc
-echo "" >> /etc/php.d/apcu.ini
-echo "apc.rfc1867=1" >> /etc/php.d/apcu.ini
-echo "apc.rfc1867_prefix=upload_" >> /etc/php.d/apcu.ini
-echo "apc.rfc1867_name=APC_UPLOAD_PROGRESS" >> /etc/php.d/apcu.ini
-echo "apc.rfc1867_freq=0" >> /etc/php.d/apcu.ini
-echo "apc.rfc1867_ttl=3600" >> /etc/php.d/apcu.ini
-# optimize opcodecache for php 5.5
-echo "opcache.memory_consumption=128" >> /etc/php.ini
-echo "opcache.max_accelerated_files=10000" >> /etc/php.ini
-echo "opcache.max_wasted_percentage=10" >> /etc/php.ini
-echo "opcache.validate_timestamps=0" >> /etc/php.ini
-echo "opcache.fast_shutdown=1" >> /etc/php.ini
-
 # setup publicize for the homepage system to market this university
 git clone --branch 7.x-1.x https://github.com/drupalprojects/publicize.git /var/www/html/publicize
 cd /var/www/html/publicize
